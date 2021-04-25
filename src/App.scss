@@ -7,6 +7,11 @@
   height: 40vmin;
   pointer-events: none;
 }
+.App-body {
+  //padding:20px 0;
+}
+
+.ant-typography {text-align: left;}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
