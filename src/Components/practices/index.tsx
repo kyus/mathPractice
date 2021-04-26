@@ -3,6 +3,7 @@ import {Route, RouteComponentProps} from 'react-router-dom';
 import {Breadcrumb, Layout, Menu, PageHeader} from 'antd';
 import {CalculatorTwoTone} from '@ant-design/icons';
 import LinearEq from "./J1/LinearEq";
+import QuadraticEq from "./J3/QuadraticEq";
 
 function Practices({history, location}:RouteComponentProps) {
   const {Sider, Content} = Layout;
@@ -10,6 +11,13 @@ function Practices({history, location}:RouteComponentProps) {
   const movePage = (page:string) => {
     history.push(`/practices/${page}`);
     setSelected([page]);
+  }
+  const current = () => {
+    switch(selected[0]) {
+      case "linearEq": return '1차방정식';
+      case "quadraticEq": return '2차방정식';
+      default: return selected[0];
+    }
   }
   useEffect(() => {
     history.push('/practices/linearEq');
@@ -35,11 +43,12 @@ function Practices({history, location}:RouteComponentProps) {
         <Breadcrumb>
           <Breadcrumb.Item>main</Breadcrumb.Item>
           <Breadcrumb.Item>practices</Breadcrumb.Item>
-          <Breadcrumb.Item>{selected[0]}</Breadcrumb.Item>
+          <Breadcrumb.Item>{current()}</Breadcrumb.Item>
         </Breadcrumb>
       </PageHeader>
       <Content className={"practices"}>
         <Route exact path={"/practices/linearEq"} component={LinearEq} />
+        <Route exact path={"/practices/quadraticEq"} component={QuadraticEq} />
       </Content>
     </Layout>
   </Layout>
