@@ -4,8 +4,8 @@ import {Breadcrumb, Layout, Menu} from 'antd';
 import {QuestionCircleOutlined, ApiOutlined, FormOutlined} from '@ant-design/icons';
 import {Switch, Route, withRouter, RouteComponentProps} from 'react-router-dom';
 import About from './Components/about/About';
-import LinearEq from "./Components/J1/LinearEq";
 import Contact from "./Components/contact/Contact";
+import Practices from "./Components/practices";
 
 function App({history, location}:RouteComponentProps) {
   console.log('loc', location);
@@ -29,18 +29,21 @@ function App({history, location}:RouteComponentProps) {
         </Menu>
       </Header>
       <Content>
-        <Breadcrumb style={{padding:"5px 10px", textAlign:'left'}}>
-          <Breadcrumb.Item>main</Breadcrumb.Item>
-          {
-            loc.map((l,k) => {
-              return <Breadcrumb.Item key={k}>{l}</Breadcrumb.Item>
-            })
-          }
-        </Breadcrumb>
+        {
+          !loc.includes('practices') &&
+          <Breadcrumb style={{padding: "5px 10px", textAlign: 'left'}}>
+            <Breadcrumb.Item>main</Breadcrumb.Item>
+            {
+              loc.map((l, k) => {
+                return <Breadcrumb.Item key={k}>{l}</Breadcrumb.Item>
+              })
+            }
+          </Breadcrumb>
+        }
         <Switch>
           <Route exact path={"/about"} component={About} />
-          <Route exact path={"/practices"} component={LinearEq} />
           <Route exact path={"/contact"} component={Contact} />
+          <Route path={"/practices"} component={Practices} />
         </Switch>
       </Content>
       <Footer>

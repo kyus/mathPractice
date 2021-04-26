@@ -12,6 +12,7 @@
 }
 
 .ant-typography {text-align: left;}
+.ant-layout-content {background: #fff;}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -41,4 +42,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@media screen and (max-width: 479px) {
+  .ant-layout-header {padding:0;}
+  .ant-page-header {padding:5px 10px;}
+  .practices .ant-page-header-heading-sub-title {display:none;}
 }
